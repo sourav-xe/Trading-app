@@ -3,13 +3,12 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      dbName: "tradeapp",
     });
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`❌ DB Connection Failed: ${error.message}`);
-    process.exit(1);
+    console.error("❌ MongoDB connection error:", error.message);
+    process.exit(1); // render will restart it
   }
 };
 
