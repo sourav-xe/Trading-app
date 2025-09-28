@@ -1,4 +1,5 @@
 📈 TradeApp – Mini Financial Trading App
+https://trading-app-pam4.vercel.app/
 
 A full-stack mini trading app built with MERN stack (MongoDB, Express.js, React, Node.js).
 Implements authentication, KYC verification, product listings, portfolio management, transactions, and a personal watchlist.
@@ -109,7 +110,7 @@ Watchlist
 
 🎥 Demo Video
 
-👉 [Add your 3–5 min demo video link here (Google Drive / Loom / YouTube)]
+👉 https://drive.google.com/file/d/1JvGd2PU0dlWbKXeu1ybLRm-qjflZP4nc/view?usp=sharing
 
 ✨ Bonus Features (Optional)
 
