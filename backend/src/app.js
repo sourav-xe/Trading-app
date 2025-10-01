@@ -21,7 +21,6 @@ app.use(express.json());
 
 app.use(cors({
   origin: [
-    "http://localhost:3000", // for local dev
     "https://trading-app-pam4.vercel.app" // your deployed frontend
   ],
   credentials: true,
