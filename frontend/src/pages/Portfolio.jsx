@@ -17,7 +17,7 @@ import {
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-const socket = io("http://localhost:5000");
+const socket = io("https://trading-app-2-utd9.onrender.com");
 
 const Portfolio = () => {
   const { user } = useAuth();
@@ -36,7 +36,7 @@ const Portfolio = () => {
 
       try {
         const token = user.token;
-        const res = await axios.get("http://localhost:5000/api/portfolio", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/portfolio`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setData(res.data);
@@ -78,7 +78,7 @@ const Portfolio = () => {
       setSellModal({ open: false, product: null, units: 0 });
 
       // Refresh portfolio after selling
-      const res = await axios.get("http://localhost:5000/api/portfolio", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/portfolio`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setData(res.data);

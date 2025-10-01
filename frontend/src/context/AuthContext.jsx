@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       // DO NOT set Content-Type here — axios/browser will set the boundary
-      const { data } = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, formData);
       localStorage.setItem("userInfo", JSON.stringify(data));
       setUser(data);
       return data;
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       setLoading(true);
-      const { data } = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+      const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { email, password });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setUser(data);
       return data;

@@ -7,7 +7,7 @@ const Transactions = () => {
     const fetchTransactions = async () => {
       try {
         const token = localStorage.getItem("token"); // JWT stored after login
-        const res = await fetch("http://localhost:5000/api/transactions", {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/transactions`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import * as api from "../api/api"; // ✅ use API wrapper
 
 const BuyForm = ({ product }) => {
   const { user } = useAuth();
@@ -12,12 +12,10 @@ const BuyForm = ({ product }) => {
     if (!user) return alert("Please login");
     try {
       setLoading(true);
-      const token = user.token;
-      await axios.post(
-        "http://localhost:5000/api/transactions/buy",
-        { productId: product._id, units: Number(units) },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      await api.buyProduct({
+        productId: product._id,
+        units: Number(units),
+      });
       alert("Purchased!");
     } catch (err) {
       alert(err.response?.data?.message || "Buy failed");

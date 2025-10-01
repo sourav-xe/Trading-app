@@ -36,7 +36,7 @@ const SYMBOL_TO_ID = {
   BNB: "binancecoin",
 };
 
-const socket = io("http://localhost:5000");
+const socket = io(process.env.REACT_APP_SOCKET_URL);
 const Dashboard = () => {
   const { user } = useAuth();
   const [products, setProducts] = useState([]);
@@ -67,9 +67,10 @@ const Dashboard = () => {
     const fetchPortfolio = async () => {
       if (!user) return;
       try {
-        const res = await axios.get("http://localhost:5000/api/portfolio", {
-          headers: { Authorization: `Bearer ${user.token}` },
-        });
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/portfolio`, {
+  headers: { Authorization: `Bearer ${user.token}` },
+});
+
         setPortfolio(res.data);
 
         // Build balance chart from portfolio values (simple approximation)

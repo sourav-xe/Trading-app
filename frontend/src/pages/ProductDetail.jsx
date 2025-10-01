@@ -19,7 +19,7 @@ import {
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://trading-app-2-utd9.onrender.com");
 
 const ProductDetail = () => {
   const { id } = useParams();
