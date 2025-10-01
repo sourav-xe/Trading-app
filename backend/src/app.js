@@ -19,11 +19,14 @@ if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 // Middlewares
 app.use(express.json());
 
-// Allow requests from your frontend (adjust origin as needed)
 app.use(cors({
-  origin: "http://localhost:3000", // your React dev server
-  // origin: "*" // dev option if you prefer
+  origin: [
+    "http://localhost:3000", // for local dev
+    "https://trading-app-pam4.vercel.app" // your deployed frontend
+  ],
+  credentials: true,
 }));
+
 
 // serve static files in uploads
 app.use("/uploads", express.static(uploadsDir));

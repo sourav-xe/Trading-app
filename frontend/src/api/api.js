@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // backend URL
+  baseURL: "https://trading-app-2-utd9.onrender.com/api", // deployed backend
 });
 
 API.interceptors.request.use((req) => {
-  const userInfo = localStorage.getItem("userInfo"); // ✅ must match
+  const userInfo = localStorage.getItem("userInfo"); // must match your login storage
   if (userInfo) {
     req.headers.Authorization = `Bearer ${JSON.parse(userInfo).token}`;
   }
